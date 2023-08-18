@@ -78,3 +78,4 @@ export default Navbar;
 function handleScroll(this: Window, ev: Event) {
     throw new Error('Function not implemented.');
 }
+
