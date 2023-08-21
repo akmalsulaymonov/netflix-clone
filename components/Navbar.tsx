@@ -1,8 +1,8 @@
+import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
+import { useCallback, useEffect, useState } from 'react';
 import NavbarItem from './NavbarItem';
 import MobileMenu from './MobileMenu';
 import AccountMenu from './AccountMenu';
-import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
-import { useCallback, useEffect, useState } from 'react';
 
 const TOP_OFFSET = 66;
 
@@ -13,20 +13,21 @@ const Navbar = () => {
     const [showBackground, setShowBackground] = useState(false);
 
     useEffect(() => {
-        if (window.scrollY >= TOP_OFFSET) {
-            setShowBackground(true);
+        const handleScroll = () => {
+          console.log(window.scrollY)
+          if (window.scrollY >= TOP_OFFSET) {
+            setShowBackground(true)
+          } else {
+            setShowBackground(false)
+          }
         }
-        else{
-            setShowBackground(false);
-        }
-
+    
         window.addEventListener('scroll', handleScroll);
-
+    
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener('scroll', handleScroll);
         }
-
-    }, []);
+      }, []);
 
     const toggleMobileMenu = useCallback(() => {
         setShowMobileMenu((current) => !current);
@@ -74,8 +75,4 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-function handleScroll(this: Window, ev: Event) {
-    throw new Error('Function not implemented.');
-}
 
